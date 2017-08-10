@@ -9,7 +9,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 
-; if packages are not synced, sync
+;; if packages are not synced, sync
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -26,22 +26,28 @@
  ;; If there is more than one, they won't work right.
  )
 
-;Delete or replace selection as opposed to at cursor
+;; Delete or replace selection as opposed to at cursor
 (delete-selection-mode t)
 
-;Show Line Numbers along left side
+;; Show Line Numbers along left side
 (global-linum-mode t)
 
-;Do not show menu bar along top
+;; Do not show menu bar along top
 (menu-bar-mode -1)
 
-;Highlight todos and other keywords
+;; Highlight todos and other keywords
 (hl-todo-mode t)
 
-;Turn off auto indentation of comments in emacs lisp
+;; Turn off auto indentation of comments in emacs lisp
 (setq ess-fancy-comments nil)
 
-;Set Theme
+;; Put autosave and backup files in .emacs.d/backups
+(setq backup-directory-alist
+      `((".*" . , "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.emacs.d/backups" t)))
+
+;; Set Theme
 (load-theme 'paganini t)
 (custom-set-faces
  ;; other faces
