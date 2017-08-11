@@ -26,6 +26,17 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;;----------
+;;;modes
+;;;----------
+
+;; Global Highlight mode
+(define-globalized-minor-mode my-hl-todo-mode-global hl-todo-mode
+  (lambda () (hl-todo-mode t)))
+
+;; Highlight todos and other keywords
+(my-hl-todo-mode-global t)
+
 ;; Delete or replace selection as opposed to at cursor
 (delete-selection-mode t)
 
@@ -35,12 +46,6 @@
 ;; Do not show menu bar along top
 (menu-bar-mode -1)
 
-;; Global Highlight mode
-(define-globalized-minor-mode my-hl-todo-mode-global hl-todo-mode
-  (lambda () (hl-todo-mode t)))
-
-;; Highlight todos and other keywords
-(my-hl-todo-mode-global t)
 
 ;; Turn off auto indentation of comments in emacs lisp
 (setq ess-fancy-comments nil)
