@@ -47,7 +47,6 @@
 (menu-bar-mode -1)
 
 
-
 ;; Turn off auto indentation of comments in emacs lisp
 (setq ess-fancy-comments nil)
 
