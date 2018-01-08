@@ -1,1 +1,4 @@
-/eshell
+eshell/
+auto-save-list/
+elpa/
+backups/
