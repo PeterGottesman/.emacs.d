@@ -6,6 +6,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 (require 'package)
+(require 'use-package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 
@@ -44,6 +45,28 @@
   :bind ("<f12>" . 'multi-term-dedicated-toggle)
   :config (setq multi-term-program "/bin/bash"
 		multi-term-dedicated-close-back-to-open-buffer-p t))
+
+(use-package irony
+  :hook ('c-mode-hook 'irony-mode))
+
+(use-package company
+  :bind ("C-\\" . company-complete)
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (use-package company-c-headers)
+  (use-package company-irony)
+  (setq company-c-headers-path-user'("./Inc" ".")
+	company-show-numbers t
+	company-backends '((company-irony company-c-headers))))
+
+(use-package ggtags
+  :bind (("M-n" . ggtags-find-tag-dwim)
+	 ("M-." . ggtags-find-definition)
+	 ("M-\/". ggtags-find-reference))
+  :init (add-hook 'c-mode-common-hook
+		  (lambda ()
+		    (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+		      (ggtags-mode 1)))))
 
 (delete-selection-mode t)
 (global-linum-mode t)

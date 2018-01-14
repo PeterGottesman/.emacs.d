@@ -11,7 +11,10 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (multi-term paganini-theme hl-todo magit package-build))))
+    (company-irony company-quickhelp company-c-headers use-package multi-term paganini-theme hl-todo magit package-build)))
+ '(safe-local-variable-values
+   (quote
+    ((company-clang-arguments "-I/usr/include" "-I../Inc" "-I../Drivers/STM32F4xx_HAL_Driver/Inc" "-I../Drivers/CMSIS/Include" "-I../Drivers/CMSIS/Device/ST/STM32F4xx/Include" "-DUSE_HAL_DRIVER" "-DSTM32F410Rx")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
