@@ -57,7 +57,7 @@
   (use-package company-irony)
   (setq company-c-headers-path-user'("./Inc" ".")
 	company-show-numbers t
-	company-backends '((company-irony company-c-headers))))
+	company-backends '((company-clang company-c-headers))))
 
 (use-package ggtags
   :bind (("M-n" . ggtags-find-tag-dwim)
