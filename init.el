@@ -21,7 +21,7 @@
 (setq ess-fancy-comments nil
       backup-directory-copying t
       backup-directory-alist '(("." . "~/.emacs.d/backups"))
-      auto-save-file-name-transforms '(("." "~/.emacs.d/backups" t))
+      auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backups" t))
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
@@ -54,6 +54,8 @@
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
   (use-package company-c-headers)
+  (use-package company-statistics
+    :init (add-hook 'after-init-hook 'company-statistics-mode))
   (use-package company-irony)
   (setq company-c-headers-path-user'("./Inc" ".")
 	company-show-numbers t
