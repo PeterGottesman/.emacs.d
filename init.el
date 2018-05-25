@@ -71,6 +71,10 @@
 		      (ggtags-mode 1))))
   (global-set-key (kbd "M-,") 'xref-pop-marker-stack)) ; For Emacs <25
 
+(use-package ace-window
+  :bind ("C-x o" . 'ace-window)
+  )
+
 (delete-selection-mode t)
 (global-linum-mode t)
 (menu-bar-mode -1)
@@ -78,3 +82,4 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+(put 'downcase-region 'disabled nil)
