@@ -75,6 +75,12 @@
   :bind ("C-x o" . 'ace-window)
   )
 
+(use-package origami
+  :bind (("C-c k" . origami-toggle-node)
+	 ("C-c C-k" . origami-toggle-all-nodes))
+  :init (global-origami-mode)
+  )
+
 (delete-selection-mode t)
 (global-linum-mode t)
 (menu-bar-mode -1)
