@@ -37,9 +37,9 @@
 (define-globalized-minor-mode my-hl-todo-mode-global hl-todo-mode
   (lambda () (hl-todo-mode t)))
 
-(use-package paganini-theme
-  :init
-  (load-theme 'paganini t))
+;; (use-package paganini-theme
+;;   :init
+;;   (load-theme 'paganini t))
 
 (use-package multi-term
   :bind ("<f12>" . 'multi-term-dedicated-toggle)
@@ -85,6 +85,7 @@
 (global-linum-mode t)
 (menu-bar-mode -1)
 (my-hl-todo-mode-global t)
+(load-theme 'misterioso t)
 
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (setq custom-file "~/.emacs.d/custom.el")
