@@ -86,6 +86,7 @@
 (menu-bar-mode -1)
 (my-hl-todo-mode-global t)
 
+(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 (put 'downcase-region 'disabled nil)
