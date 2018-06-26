@@ -43,7 +43,7 @@
 
 (use-package multi-term
   :bind ("<f12>" . 'multi-term-dedicated-toggle)
-  :config (setq multi-term-program "/bin/bash"
+  :config (setq multi-term-program "/bin/zsh"
 		multi-term-dedicated-close-back-to-open-buffer-p t))
 
 (use-package irony
