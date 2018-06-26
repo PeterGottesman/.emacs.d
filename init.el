@@ -81,6 +81,9 @@
   :init (global-origami-mode)
   )
 
+(global-set-key (kbd "<f2>") 'whitespace-mode)
+(global-set-key (kbd "S-<f2>") 'whitespace-cleanup)
+
 (delete-selection-mode t)
 (global-linum-mode t)
 (menu-bar-mode -1)
