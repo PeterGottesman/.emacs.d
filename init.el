@@ -90,6 +90,11 @@
 (my-hl-todo-mode-global t)
 (load-theme 'misterioso t)
 
+;; Turn off file variables
+;; See: https://www.emacswiki.org/emacs/FileLocalVariables#toc2
+(setq enable-local-variables nil
+      enable-local-eval nil)
+
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
