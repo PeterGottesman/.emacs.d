@@ -15,18 +15,20 @@
   (package-refresh-contents))
 
 (setq c-default-style "linux"
-      c-basic-offset 4)
+      c-basic-offset 4
+      tab-width 4)
 (c-set-offset 'case-label '+)
 
 (setq ess-fancy-comments nil
       backup-directory-copying t
       backup-directory-alist '(("." . "~/.emacs.d/backups"))
-      auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backups" t))
+      auto-save-file-name-transforms `((".*" ,"~/.emacs.d/backups/\\1" t))
       delete-old-versions t
-      kept-new-versions 6
+      kept-new-versions 3
       kept-old-versions 2
       version-control t
-      use-package-always-ensure t)
+      use-package-always-ensure t
+      org-list-allow-alphabetical t)
 
 (use-package magit
   :commands (magit-status magit-blame magit-checkout)
@@ -81,6 +83,26 @@
   :init (global-origami-mode)
   )
 
+(use-package elpy
+  :bind (("C-c i" . elpy-shell-switch-to-shell))
+  :init (elpy-enable)
+  :config (setq python-shell-interpreter "jupyter"
+	       python-shell-interpreter-args "console --simple-prompt"
+	       python-shell-prompt-detect-failure-warning nil)
+	 (add-to-list 'python-shell-completion-native-disabled-interpreters
+		      "jupyter")
+  )
+
+(use-package compilation
+  :load-path "lisp/"
+  :bind (("C-c C-c" . my-compile-recompile))
+  )
+
+(use-package copy-paste
+  :load-path "lisp/"
+  :bind (("C-c y" . system-clipboard-mode))
+  )
+
 (global-set-key (kbd "<f2>") 'whitespace-mode)
 (global-set-key (kbd "S-<f2>") 'whitespace-cleanup)
 
@@ -91,9 +113,15 @@
 (load-theme 'misterioso t)
 
 ;; Turn off file variables
-;; See: https://www.emacswiki.org/emacs/FileLocalVariables#toc2
-(setq enable-local-variables nil
-      enable-local-eval nil)
+;; ;; See: https://www.emacswiki.org/emacs/FileLocalVariables#toc2
+;; (setq enable-local-variables nil
+;;       enable-local-eval nil)
+
+(add-hook 'go-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends) '(company-go))
+	    (company-mode)
+		(setq tab-width 4)))
 
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (setq custom-file "~/.emacs.d/custom.el")
